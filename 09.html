@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="mycanvas" height="600" width="600"></canvas>
+<body>
+<script>
+    var canvas=document.getElementById("mycanvas");
+    var ctx=canvas.getContext("2d");
+    var closeMouth=function () {
+        ctx.beginPath()
+        ctx.arc(300, 300, 200, 0, 2 * Math.PI)
+        ctx.strokeStyle = "black"
+        ctx.lineTo(300, 300)
+        ctx.stroke()
+        //画眼睛
+        ctx.beginPath()
+        ctx.arc(370, 240, 50, 0, 2 * Math.PI)
+        ctx.fillStyle = "blue"
+        ctx.fill()
+        //画眼珠
+        ctx.beginPath()
+        ctx.arc(373, 225, 6, 0, 2 * Math.PI)
+        ctx.fillStyle = "#fff"
+        ctx.fill()
+    }
+
+    var openMouth=function () {
+        //画大脸盘子
+        ctx.beginPath()
+        ctx.strokeStyle = "black"
+        ctx.arc(300, 300, 200, 1 / 4 * (Math.PI), 7 / 4 * Math.PI)
+        ctx.lineTo(300, 300)
+        ctx.closePath()
+        ctx.stroke()
+        //画个眼睛
+        ctx.beginPath()
+        ctx.fillStyle = "blue"
+        ctx.arc(320, 200, 50, 0, 2 * Math.PI)
+        ctx.fill()
+        //画眼珠
+        ctx.beginPath()
+        ctx.arc(323, 185, 6, 0, 2 * Math.PI)
+        ctx.fillStyle = "#fff"
+        ctx.fill()
+    }
+    //closeMouth();
+    //openMouth();
+    var x=1;
+    window.setInterval(function () {
+        x++;
+        if(x%2==0){
+            ctx.clearRect(0,0,600,600);
+            closeMouth();
+        }else{
+            ctx.clearRect(0,0,600,600);
+            openMouth();
+        }
+    },500);
+
+</script>
+</body>
+</html>
